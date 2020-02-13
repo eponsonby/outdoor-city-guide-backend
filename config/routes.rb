@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :campgrounds
+  resources :reis
+  resources :climbing_gyms
+  resources :parks
+  resources :cities
+  resources :comments
   namespace :api do
     namespace :v1 do
       resources :users

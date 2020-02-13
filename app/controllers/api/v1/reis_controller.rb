@@ -1,0 +1,2 @@
+class ReisController < ApplicationController
+end

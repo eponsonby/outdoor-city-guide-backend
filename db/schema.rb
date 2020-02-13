@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_151619) do
+ActiveRecord::Schema.define(version: 2020_02_13_171816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_02_13_151619) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "park_id"
+    t.integer "city_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -38,12 +40,15 @@ ActiveRecord::Schema.define(version: 2020_02_13_151619) do
     t.string "zip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id"
   end
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "city_id"
   end
 
   create_table "parks", force: :cascade do |t|
@@ -51,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_151619) do
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id"
   end
 
   create_table "reis", force: :cascade do |t|
@@ -61,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_151619) do
     t.string "zip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id"
   end
 
   create_table "users", force: :cascade do |t|

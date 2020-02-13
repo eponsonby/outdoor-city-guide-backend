@@ -6,7 +6,6 @@ class CreateReis < ActiveRecord::Migration[6.0]
       t.string :city
       t.string :state
       t.string :zip
-
       t.timestamps
     end
   end

@@ -3,7 +3,6 @@ class CreateParks < ActiveRecord::Migration[6.0]
     create_table :parks do |t|
       t.string :name
       t.string :state
-
       t.timestamps
     end
   end

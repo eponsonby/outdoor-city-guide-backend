@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: outdoor_city_guide_backend_development
+  username: excellaep
+  password: password
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -81,5 +83,5 @@ test:
 production:
   <<: *default
   database: outdoor_city_guide_backend_production
-  username: outdoor_city_guide_backend
-  password: <%= ENV['OUTDOOR_CITY_GUIDE_BACKEND_DATABASE_PASSWORD'] %>
+  username: excellaep
+  password: password

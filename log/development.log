@@ -2447,3 +2447,120 @@ puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
 puma (4.3.1) lib/puma/server.rb:472:in `process_client'
 puma (4.3.1) lib/puma/server.rb:328:in `block in run'
 puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/api/v1/login" for ::1 at 2020-02-18 14:20:21 -0500
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/excellaep/Development/code/outdoor-city-guide-backend/app/controllers/api/v1/sessions_controller.rb:6: syntax error, unexpected if, expecting ')'
+            if @user && @user.authenticate(...
+            ^~
+/Users/excellaep/Development/code/outdoor-city-guide-backend/app/controllers/api/v1/sessions_controller.rb:21: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+                error "No one is logged in"
+                      ^
+/Users/excellaep/Development/code/outdoor-city-guide-backend/app/controllers/api/v1/sessions_controller.rb:22: syntax error, unexpected '}', expecting end
+            }
+            ^):
+  
+app/controllers/api/v1/sessions_controller.rb:6: syntax error, unexpected if, expecting ')'
+app/controllers/api/v1/sessions_controller.rb:21: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+app/controllers/api/v1/sessions_controller.rb:22: syntax error, unexpected '}', expecting end
+app/controllers/api/v1/sessions_controller.rb:6: syntax error, unexpected if, expecting ')'
+app/controllers/api/v1/sessions_controller.rb:21: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+app/controllers/api/v1/sessions_controller.rb:22: syntax error, unexpected '}', expecting end
+Started POST "/api/v1/login" for ::1 at 2020-02-18 14:20:29 -0500
+  
+SyntaxError (/Users/excellaep/Development/code/outdoor-city-guide-backend/app/controllers/api/v1/sessions_controller.rb:6: syntax error, unexpected if, expecting ')'
+            if @user && @user.authenticate(...
+            ^~
+/Users/excellaep/Development/code/outdoor-city-guide-backend/app/controllers/api/v1/sessions_controller.rb:21: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+                error "No one is logged in"
+                      ^
+/Users/excellaep/Development/code/outdoor-city-guide-backend/app/controllers/api/v1/sessions_controller.rb:22: syntax error, unexpected '}', expecting end
+            }
+            ^):
+  
+app/controllers/api/v1/sessions_controller.rb:6: syntax error, unexpected if, expecting ')'
+app/controllers/api/v1/sessions_controller.rb:21: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+app/controllers/api/v1/sessions_controller.rb:22: syntax error, unexpected '}', expecting end
+app/controllers/api/v1/sessions_controller.rb:6: syntax error, unexpected if, expecting ')'
+app/controllers/api/v1/sessions_controller.rb:21: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+app/controllers/api/v1/sessions_controller.rb:22: syntax error, unexpected '}', expecting end
+Started POST "/api/v1/login" for ::1 at 2020-02-18 14:21:13 -0500
+  
+SyntaxError (/Users/excellaep/Development/code/outdoor-city-guide-backend/app/controllers/api/v1/sessions_controller.rb:21: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+                error "No one is logged in"
+                      ^
+/Users/excellaep/Development/code/outdoor-city-guide-backend/app/controllers/api/v1/sessions_controller.rb:22: syntax error, unexpected '}', expecting end
+            }
+            ^):
+  
+app/controllers/api/v1/sessions_controller.rb:21: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+app/controllers/api/v1/sessions_controller.rb:22: syntax error, unexpected '}', expecting end
+app/controllers/api/v1/sessions_controller.rb:21: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+app/controllers/api/v1/sessions_controller.rb:22: syntax error, unexpected '}', expecting end
+Started POST "/api/v1/login" for ::1 at 2020-02-18 14:23:27 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/excellaep/Development/code/outdoor-city-guide-backend/app/controllers/api/v1/sessions_controller.rb:25: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/sessions_controller.rb:25: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/sessions_controller.rb:25: syntax error, unexpected end-of-input, expecting end
+Started POST "/api/v1/login" for ::1 at 2020-02-18 14:23:46 -0500
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"username"=>"", "password"=>"[FILTERED]", "session"=>{"username"=>"", "password"=>"[FILTERED]"}}
+Started POST "/api/v1/login" for ::1 at 2020-02-18 14:24:50 -0500
+Started POST "/api/v1/login" for ::1 at 2020-02-18 14:24:50 -0500
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `create'
+Completed 200 OK in 64261ms (Views: 0.2ms | ActiveRecord: 7.6ms | Allocations: 62171)
+
+
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"username"=>"erin", "password"=>"[FILTERED]", "session"=>{"username"=>"erin", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 12528ms (ActiveRecord: 0.0ms | Allocations: 30172)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/api/v1/sessions_controller.rb:5:in `create'
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"username"=>"erin", "password"=>"[FILTERED]", "session"=>{"username"=>"erin", "password"=>"[FILTERED]"}}
+Started POST "/api/v1/login" for ::1 at 2020-02-18 14:25:39 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"username"=>"erin", "password"=>"[FILTERED]", "session"=>{"username"=>"erin", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "erin"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+Completed 200 OK in 262ms (Views: 0.4ms | ActiveRecord: 13.3ms | Allocations: 6460)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-02-18 14:25:45 -0500
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"username"=>"erin", "password"=>"[FILTERED]", "session"=>{"username"=>"erin", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "erin"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+Completed 200 OK in 239ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 684)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-02-18 14:25:59 -0500
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"username"=>"erin", "password"=>"[FILTERED]", "session"=>{"username"=>"erin", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "erin"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+Completed 200 OK in 252ms (Views: 0.4ms | ActiveRecord: 6.7ms | Allocations: 5522)
+
+
+Started GET "/api/v1/get_current_user" for ::1 at 2020-02-18 14:27:52 -0500
+Processing by Api::V1::SessionsController#get_current_user as */*
+  Parameters: {"session"=>{}}
+Completed 404 Not Found in 2ms (ActiveRecord: 0.0ms | Allocations: 134)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/application_controller.rb:4:in `current_user'
+app/controllers/application_controller.rb:8:in `logged_in?'
+app/controllers/api/v1/sessions_controller.rb:16:in `get_current_user'

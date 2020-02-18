@@ -21,4 +21,9 @@ class Api::V1::SessionsController < ApplicationController
             }
         end
     end
+
+    def destroy
+        session.clear
+    end
+
 end

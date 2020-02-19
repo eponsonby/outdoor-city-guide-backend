@@ -3,10 +3,13 @@ class CitySerializer
     attributes :name, :state
     
     attribute :parks do |city|
-        city.parks.map |park|
+        city.parks.map do |park|
         {
-            name: park.name
+            name: park.name,
             state: park.state
         }
+    end
   end
+end
+
   

@@ -22,6 +22,19 @@ class CitySerializer
             }
         end
     end
+
+
+    attribute :reis do |city|
+        city.reis.map do |rei|
+            {
+                name: rei.name,
+                street: rei.street,
+                city: rei.city,
+                state: rei.state,
+                zip: rei.zip
+            }
+        end
+    end
 end
 
   

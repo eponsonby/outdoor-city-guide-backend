@@ -10,6 +10,18 @@ class CitySerializer
         }
     end
   end
+
+    attribute :climbing_gyms do |city|
+        city.climbing_gyms.map do |cg|
+            {
+                name: cg.name,
+                street: cg.street,
+                city: cg.city,
+                state: cg.state,
+                zip: cg.zip
+            }
+        end
+    end
 end
 
   

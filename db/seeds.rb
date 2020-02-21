@@ -10,7 +10,7 @@ User.create(name: "Erin", username: "erin", password: "password")
 
 City.create(
     name: "Boulder",
-    state: "Colorado"
+    state: "CO"
 )
 
 Rei.create(

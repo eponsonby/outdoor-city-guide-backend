@@ -13,6 +13,31 @@ City.create(
     state: "CO"
 )
 
+City.create(
+    name: "Seattle",
+    state: "WA"
+)
+
+City.create(
+    name: "Reno",
+    state: "CA"
+)
+
+City.create(
+    name: "Portland",
+    state: "OR"
+)
+
+City.create(
+    name: "Asheville",
+    state: "NC,TN"
+)
+
+City.create(
+    name: "Salt Lake City",
+    state: "UT"
+)
+
 Rei.create(
     name: "REI Boulder",
     street: "1789 28th Street",

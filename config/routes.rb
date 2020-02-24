@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   post "/api/v1/signup", to: "api/v1/users#create"
   delete '/api/v1/logout', to: "api/v1/sessions#destroy"
   get "/api/v1/get_current_user", to: "api/v1/sessions#get_current_user"
+  get '/api/v1/get_parks', to: "api/v1/parks#api_fetch"
+  get '/api/v1/get_local_parks', to: "api/v1/parks#api_fetch_local_parks"
 
 
   namespace :api do

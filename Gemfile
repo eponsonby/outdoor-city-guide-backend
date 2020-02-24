@@ -46,3 +46,5 @@ gem "bcrypt", "~> 3.1"
 gem "fast_jsonapi", "~> 1.5"
 
 gem "dotenv-rails", "~> 2.7"
+
+gem "httparty", "~> 0.18.0"

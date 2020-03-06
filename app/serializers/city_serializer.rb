@@ -18,7 +18,8 @@ class CitySerializer
                 street: cg.street,
                 city: cg.city,
                 state: cg.state,
-                zip: cg.zip
+                zip: cg.zip,
+                url: cg.url
             }
         end
     end
@@ -31,7 +32,8 @@ class CitySerializer
                 street: os.street,
                 city: os.city,
                 state: os.state,
-                zip: os.zip
+                zip: os.zip,
+                url: os.url
             }
         end
     end

@@ -498,7 +498,8 @@ ClimbingGym.create(
     street: "2829 Mapleton Avenue",
     city_id: 1,
     state: "Colorado",
-    zip: "80301"
+    zip: "80301",
+    url: "https://boulderrockclub.com/"
 )
 
 ClimbingGym.create(

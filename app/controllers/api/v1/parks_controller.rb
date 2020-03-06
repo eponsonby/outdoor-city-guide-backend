@@ -20,21 +20,24 @@ class Api::V1::ParksController < ApplicationController
             )
 
             @parse_description = Nokogiri::HTML(@response["FacilityDescription"])
-            @description = @parse_description.css('.p').text.to_json
+            @description = @parse_description.css('p').first.text
             @parse_name = Nokogiri::HTML(@response["FacilityName"])
-            @name = @parse_name.css('p').text.to_json
+            @name = @parse_name.css('p').text
+            @json = {name: @name, description: @description}
+            
 
         elsif params[:type] == "recareas"
             @response = HTTParty.get("https://ridb.recreation.gov/api/v1/recareas/#{params[:id]}",
                 headers: {apikey: ENV['LOCAL_PARKS_API_KEY']}
             )
+
+            @parse_description = Nokogiri::HTML(@response["RecAreaDescription"])
+            @description = @parse_description.css('p').first.text
+            @parse_name = Nokogiri::HTML(@response["RecAreaName"])
+            @name = @parse_name.css('p').text
+            @json = {name: @name, description: @description}
         end
 
-        @parse_description = Nokogiri::HTML(@response["RecAreaDescription"])
-        @description = @parse_description.css('p').text.to_json
-        @parse_name = Nokogiri::HTML(@response["RecAreaName"])
-        @name = @parse_name.css('p').text.to_json
-        @json = {name: @name, description: @description}
         render json: @json
     end
 

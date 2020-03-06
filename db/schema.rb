@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_201308) do
+ActiveRecord::Schema.define(version: 2020_03_06_170106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_201308) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "city_id"
+    t.string "url"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -50,19 +51,20 @@ ActiveRecord::Schema.define(version: 2020_02_13_201308) do
     t.integer "city_id"
   end
 
-  create_table "parks", force: :cascade do |t|
-    t.string "name"
-    t.string "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "city_id"
-  end
-
-  create_table "reis", force: :cascade do |t|
+  create_table "outdoor_stores", force: :cascade do |t|
     t.string "name"
     t.string "street"
     t.string "state"
     t.string "zip"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id"
+    t.string "url"
+  end
+
+  create_table "parks", force: :cascade do |t|
+    t.string "name"
+    t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "city_id"

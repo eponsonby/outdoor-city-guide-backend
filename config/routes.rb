@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :campgrounds
-      resources :reis
+      resources :outdoor_stores
       resources :climbing_gyms
       resources :parks
       resources :cities

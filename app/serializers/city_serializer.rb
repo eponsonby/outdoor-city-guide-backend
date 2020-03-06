@@ -24,14 +24,14 @@ class CitySerializer
     end
 
 
-    attribute :reis do |city|
-        city.reis.map do |rei|
+    attribute :outdoor_stores do |city|
+        city.outdoor_stores.map do |os|
             {
-                name: rei.name,
-                street: rei.street,
-                city: rei.city,
-                state: rei.state,
-                zip: rei.zip
+                name: os.name,
+                street: os.street,
+                city: os.city,
+                state: os.state,
+                zip: os.zip
             }
         end
     end

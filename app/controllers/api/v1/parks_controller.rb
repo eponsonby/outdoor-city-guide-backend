@@ -7,7 +7,7 @@ class Api::V1::ParksController < ApplicationController
     end
 
     def api_fetch
-        @response = HTTParty.get("https://developer.nps.gov/api/v1/parks?parkCode=olym%2Cmora%2Cnoca%2Claro%2Cromo%2Cyose%2Ccrla%2Cgrsm&api_key=#{ENV['PARKS_API_KEY']}")
+        @response = HTTParty.get("https://developer.nps.gov/api/v1/parks?parkCode=olym%2Cmora%2Cnoca%2Claro%2Cromo%2Cyose%2Ccrla%2Cgrsm%2Ccare%2Ctica&api_key=#{ENV['PARKS_API_KEY']}")
         render json: @response.parsed_response 
     end
 

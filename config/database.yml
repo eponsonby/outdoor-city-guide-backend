@@ -83,5 +83,5 @@ test:
 production:
   <<: *default
   database: outdoor_city_guide_backend_production
-  username: excellaep
-  password: password
+  username: the-trailhead
+  password: <%= ENV['TRAILHEAD_DATABASE_PASSWORD'] %>

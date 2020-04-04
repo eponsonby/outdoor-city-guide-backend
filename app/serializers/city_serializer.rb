@@ -8,8 +8,8 @@ class CitySerializer
             name: park.name,
             state: park.state
         }
+        end
     end
-  end
 
     attribute :climbing_gyms do |city|
         city.climbing_gyms.map do |cg|

@@ -16,9 +16,7 @@ class Api::V1::SessionsController < ApplicationController
         if logged_in?
             render json: UserSerializer.new(current_user)
         else
-            render json: {
-                error: "No one is logged in"
-            }
+            render :status => :unauthorized
         end
     end
 

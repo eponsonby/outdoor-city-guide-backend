@@ -6,36 +6,38 @@ class Api::V1::ParksController < ApplicationController
         render json: @parks
     end
 
-    def api_fetch
-        @response = HTTParty.get("https://developer.nps.gov/api/v1/parks?parkCode=olym%2Cmora%2Cnoca%2Claro%2Cromo%2Cyose%2Ccrla%2Cgrsm%2Ccare%2Ctica&api_key=#{ENV['PARKS_API_KEY']}")
-        render json: @response.parsed_response 
-    end
 
+    def api_fetch
+        @response = HTTParty.get("https://developer.nps.gov/api/v1/parks?parkCode=#{params[:code]}&api_key=#{ENV['PARKS_API_KEY']}")
+        @url = @response["data"][0]["url"]
+        @name = @response["data"][0]["fullName"]
+        @description = @response["data"][0]["description"]
+        render json: {name: @name, url: @url, description: @description}
+    end
 
     def api_fetch_local_parks
         
         if params[:type] == "facilities"
-            @response = HTTParty.get("https://ridb.recreation.gov/api/v1/facilities/#{params[:id]}",
+            @response = HTTParty.get("https://ridb.recreation.gov/api/v1/facilities/#{params[:id]}?full=true",
             headers: {apikey: ENV['LOCAL_PARKS_API_KEY']}
             )
-
             @parse_description = Nokogiri::HTML(@response["FacilityDescription"])
             @description = @parse_description.css('p').first.text
-            @parse_name = Nokogiri::HTML(@response["FacilityName"])
-            @name = @parse_name.css('p').text
-            @json = {name: @name, description: @description}
+            @name = @response["FacilityName"]
+            @url = @response["LINK"][0]["URL"]
+            @json = {name: @name, description: @description, url: @url}
             
 
         elsif params[:type] == "recareas"
-            @response = HTTParty.get("https://ridb.recreation.gov/api/v1/recareas/#{params[:id]}",
+            @response = HTTParty.get("https://ridb.recreation.gov/api/v1/recareas/#{params[:id]}?full=true",
                 headers: {apikey: ENV['LOCAL_PARKS_API_KEY']}
             )
 
             @parse_description = Nokogiri::HTML(@response["RecAreaDescription"])
             @description = @parse_description.css('p').first.text
-            @parse_name = Nokogiri::HTML(@response["RecAreaName"])
-            @name = @parse_name.css('p').text
-            @json = {name: @name, description: @description}
+            @name = @response["RecAreaName"]
+            @url = @response["LINK"][0]["URL"]
+            @json = {name: @name, description: @description, url: @url}
         end
 
         render json: @json

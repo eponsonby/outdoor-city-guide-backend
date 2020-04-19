@@ -7,7 +7,12 @@ class Api::V1::OutdoorStoresController < ApplicationController
     end
 
     def api_fetch
-        @response = HTTParty.get("https://api.yelp.com/v3/businesses/{id}&api_key=#{ENV['PARKS_API_KEY']}")
+        bearer_token = "Bearer #{ENV['YELP_API_KEY']}"
+        @response = HTTParty.get("https://api.yelp.com/v3/businesses/#{params[:id]}",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": bearer_token
+            })
         render json: @response.parsed_response 
     end
 

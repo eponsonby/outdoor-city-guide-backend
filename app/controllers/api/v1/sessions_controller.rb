@@ -16,7 +16,9 @@ class Api::V1::SessionsController < ApplicationController
         if logged_in?
             render json: UserSerializer.new(current_user)
         else
-            render :status => :unauthorized
+            render json: {
+                error: "Nobody's home"
+            }, :status => :unauthorized
         end
     end
 

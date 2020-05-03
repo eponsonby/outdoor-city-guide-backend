@@ -1,15 +1,19 @@
 class Api::V1::SessionsController < ApplicationController
     
     def create
+        byebug
         @user = User.find_by(username: params[:session][:username])
-            if @user && @user.authenticate(params[:session][:password])
-                session[:user_id] = @user.id
-                render json: UserSerializer.new(@user)
-            else
-                render json: {
-                    error: "Invalid password"
-                }
-            end
+        byebug
+        if @user && @user.authenticate(params[:session][:password])
+            byebug
+            session[:user_id] = @user.id
+            render json: UserSerializer.new(@user)
+        else
+            byebug
+            render json: {
+                error: "Invalid password"
+            }
+        end
     end
 
     def get_current_user

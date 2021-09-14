@@ -1,0 +1,56 @@
+I, [2021-06-14T09:36:07.359341 #97670]  INFO -- : [0560527d-2d2d-44af-b404-aab9f85be6d0] Started GET "/api/v1/cities" for 127.0.0.1 at 2021-06-14 09:36:07 -0400
+I, [2021-06-14T09:36:07.363201 #97670]  INFO -- : [0560527d-2d2d-44af-b404-aab9f85be6d0] Processing by Api::V1::CitiesController#index as HTML
+I, [2021-06-14T09:36:07.370894 #97670]  INFO -- : [0560527d-2d2d-44af-b404-aab9f85be6d0] Completed 500 Internal Server Error in 7ms (Allocations: 824)
+F, [2021-06-14T09:36:07.371785 #97670] FATAL -- : [0560527d-2d2d-44af-b404-aab9f85be6d0]   
+[0560527d-2d2d-44af-b404-aab9f85be6d0] PG::ConnectionBad (FATAL:  role "the-trailhead" does not exist
+):
+[0560527d-2d2d-44af-b404-aab9f85be6d0]   
+[0560527d-2d2d-44af-b404-aab9f85be6d0] app/controllers/api/v1/cities_controller.rb:6:in `index'
+I, [2021-06-14T09:36:09.071349 #97670]  INFO -- : [e6c9d24b-114e-4e8f-b8be-9461df230cca] Started GET "/api/v1/cities" for 127.0.0.1 at 2021-06-14 09:36:09 -0400
+I, [2021-06-14T09:36:09.072178 #97670]  INFO -- : [e6c9d24b-114e-4e8f-b8be-9461df230cca] Processing by Api::V1::CitiesController#index as HTML
+I, [2021-06-14T09:36:09.076199 #97670]  INFO -- : [e6c9d24b-114e-4e8f-b8be-9461df230cca] Completed 500 Internal Server Error in 4ms (Allocations: 443)
+F, [2021-06-14T09:36:09.077298 #97670] FATAL -- : [e6c9d24b-114e-4e8f-b8be-9461df230cca]   
+[e6c9d24b-114e-4e8f-b8be-9461df230cca] PG::ConnectionBad (FATAL:  role "the-trailhead" does not exist
+):
+[e6c9d24b-114e-4e8f-b8be-9461df230cca]   
+[e6c9d24b-114e-4e8f-b8be-9461df230cca] app/controllers/api/v1/cities_controller.rb:6:in `index'
+I, [2021-06-14T09:36:19.028370 #97670]  INFO -- : [fcf5be52-7769-45b4-8480-824914cee8f5] Started GET "/api/v1/cities" for 127.0.0.1 at 2021-06-14 09:36:19 -0400
+I, [2021-06-14T09:36:19.029047 #97670]  INFO -- : [fcf5be52-7769-45b4-8480-824914cee8f5] Processing by Api::V1::CitiesController#index as HTML
+I, [2021-06-14T09:36:19.032820 #97670]  INFO -- : [fcf5be52-7769-45b4-8480-824914cee8f5] Completed 500 Internal Server Error in 3ms (Allocations: 443)
+F, [2021-06-14T09:36:19.033699 #97670] FATAL -- : [fcf5be52-7769-45b4-8480-824914cee8f5]   
+[fcf5be52-7769-45b4-8480-824914cee8f5] PG::ConnectionBad (FATAL:  role "the-trailhead" does not exist
+):
+[fcf5be52-7769-45b4-8480-824914cee8f5]   
+[fcf5be52-7769-45b4-8480-824914cee8f5] app/controllers/api/v1/cities_controller.rb:6:in `index'
+I, [2021-06-14T09:36:20.534210 #97670]  INFO -- : [ea5a1d98-c9a6-46ae-bdc1-bb743244810a] Started GET "/api/v1/cities" for 127.0.0.1 at 2021-06-14 09:36:20 -0400
+I, [2021-06-14T09:36:20.534922 #97670]  INFO -- : [ea5a1d98-c9a6-46ae-bdc1-bb743244810a] Processing by Api::V1::CitiesController#index as HTML
+I, [2021-06-14T09:36:20.538665 #97670]  INFO -- : [ea5a1d98-c9a6-46ae-bdc1-bb743244810a] Completed 500 Internal Server Error in 3ms (Allocations: 443)
+F, [2021-06-14T09:36:20.539464 #97670] FATAL -- : [ea5a1d98-c9a6-46ae-bdc1-bb743244810a]   
+[ea5a1d98-c9a6-46ae-bdc1-bb743244810a] PG::ConnectionBad (FATAL:  role "the-trailhead" does not exist
+):
+[ea5a1d98-c9a6-46ae-bdc1-bb743244810a]   
+[ea5a1d98-c9a6-46ae-bdc1-bb743244810a] app/controllers/api/v1/cities_controller.rb:6:in `index'
+I, [2021-06-14T09:36:21.151969 #97670]  INFO -- : [c8f6e12a-3aa1-4f47-8ddd-a1f4e4e507f5] Started GET "/api/v1/cities" for 127.0.0.1 at 2021-06-14 09:36:21 -0400
+I, [2021-06-14T09:36:21.152704 #97670]  INFO -- : [c8f6e12a-3aa1-4f47-8ddd-a1f4e4e507f5] Processing by Api::V1::CitiesController#index as HTML
+I, [2021-06-14T09:36:21.156592 #97670]  INFO -- : [c8f6e12a-3aa1-4f47-8ddd-a1f4e4e507f5] Completed 500 Internal Server Error in 4ms (Allocations: 443)
+F, [2021-06-14T09:36:21.157405 #97670] FATAL -- : [c8f6e12a-3aa1-4f47-8ddd-a1f4e4e507f5]   
+[c8f6e12a-3aa1-4f47-8ddd-a1f4e4e507f5] PG::ConnectionBad (FATAL:  role "the-trailhead" does not exist
+):
+[c8f6e12a-3aa1-4f47-8ddd-a1f4e4e507f5]   
+[c8f6e12a-3aa1-4f47-8ddd-a1f4e4e507f5] app/controllers/api/v1/cities_controller.rb:6:in `index'
+I, [2021-06-14T09:36:21.417139 #97670]  INFO -- : [8d488048-f8b6-4fa4-9962-de1abf7c64d6] Started GET "/api/v1/cities" for 127.0.0.1 at 2021-06-14 09:36:21 -0400
+I, [2021-06-14T09:36:21.417764 #97670]  INFO -- : [8d488048-f8b6-4fa4-9962-de1abf7c64d6] Processing by Api::V1::CitiesController#index as HTML
+I, [2021-06-14T09:36:21.421835 #97670]  INFO -- : [8d488048-f8b6-4fa4-9962-de1abf7c64d6] Completed 500 Internal Server Error in 4ms (Allocations: 434)
+F, [2021-06-14T09:36:21.422485 #97670] FATAL -- : [8d488048-f8b6-4fa4-9962-de1abf7c64d6]   
+[8d488048-f8b6-4fa4-9962-de1abf7c64d6] PG::ConnectionBad (FATAL:  role "the-trailhead" does not exist
+):
+[8d488048-f8b6-4fa4-9962-de1abf7c64d6]   
+[8d488048-f8b6-4fa4-9962-de1abf7c64d6] app/controllers/api/v1/cities_controller.rb:6:in `index'
+I, [2021-06-14T09:36:21.700089 #97670]  INFO -- : [440705ce-bca0-4ab3-9a7d-30de5a559b01] Started GET "/api/v1/cities" for 127.0.0.1 at 2021-06-14 09:36:21 -0400
+I, [2021-06-14T09:36:21.700758 #97670]  INFO -- : [440705ce-bca0-4ab3-9a7d-30de5a559b01] Processing by Api::V1::CitiesController#index as HTML
+I, [2021-06-14T09:36:21.704549 #97670]  INFO -- : [440705ce-bca0-4ab3-9a7d-30de5a559b01] Completed 500 Internal Server Error in 3ms (Allocations: 434)
+F, [2021-06-14T09:36:21.705400 #97670] FATAL -- : [440705ce-bca0-4ab3-9a7d-30de5a559b01]   
+[440705ce-bca0-4ab3-9a7d-30de5a559b01] PG::ConnectionBad (FATAL:  role "the-trailhead" does not exist
+):
+[440705ce-bca0-4ab3-9a7d-30de5a559b01]   
+[440705ce-bca0-4ab3-9a7d-30de5a559b01] app/controllers/api/v1/cities_controller.rb:6:in `index'

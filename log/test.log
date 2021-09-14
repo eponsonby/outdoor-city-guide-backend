@@ -1,0 +1,471 @@
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "outdoor_city_guide_backend_test"[0m
+  [1m[35m (283.7ms)[0m  [1m[35mCREATE DATABASE "outdoor_city_guide_backend_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "campgrounds" CASCADE[0m
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE TABLE "campgrounds" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "park_id" integer, "city_id" integer)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "cities" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "climbing_gyms" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "climbing_gyms" ("id" bigserial primary key, "name" character varying, "description" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" integer, "city_id" integer)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "outdoor_stores" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "outdoor_stores" ("id" bigserial primary key, "name" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "parks" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying)[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200322154141)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200212185346),
+(20200213150000),
+(20200213150116),
+(20200213150807),
+(20200213151131),
+(20200213151221),
+(20200213151619),
+(20200213170026),
+(20200213170158),
+(20200213170239),
+(20200213170327),
+(20200213170402),
+(20200213171757),
+(20200213171816),
+(20200213201120),
+(20200213201308),
+(20200227173645),
+(20200306165918),
+(20200306170106),
+(20200322153951);
+
+[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-06-15 12:37:04.322903"], ["updated_at", "2021-06-15 12:37:04.322903"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "723b6f31d9185d58006689e5319deba40f2efc54"], ["created_at", "2021-06-15 12:37:04.325827"], ["updated_at", "2021-06-15 12:37:04.325827"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (344.1ms)[0m  [1m[35mCREATE DATABASE "outdoor_city_guide_backend_test-1" ENCODING = 'unicode'[0m
+  [1m[35m (346.7ms)[0m  [1m[35mCREATE DATABASE "outdoor_city_guide_backend_test-0" ENCODING = 'unicode'[0m
+  [1m[35m (345.4ms)[0m  [1m[35mCREATE DATABASE "outdoor_city_guide_backend_test-5" ENCODING = 'unicode'[0m
+  [1m[35m (345.8ms)[0m  [1m[35mCREATE DATABASE "outdoor_city_guide_backend_test-3" ENCODING = 'unicode'[0m
+  [1m[35m (366.5ms)[0m  [1m[35mCREATE DATABASE "outdoor_city_guide_backend_test-4" ENCODING = 'unicode'[0m
+  [1m[35m (365.9ms)[0m  [1m[35mCREATE DATABASE "outdoor_city_guide_backend_test-7" ENCODING = 'unicode'[0m
+  [1m[35m (368.1ms)[0m  [1m[35mCREATE DATABASE "outdoor_city_guide_backend_test-2" ENCODING = 'unicode'[0m
+  [1m[35m (366.2ms)[0m  [1m[35mCREATE DATABASE "outdoor_city_guide_backend_test-6" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "campgrounds" CASCADE[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "campgrounds" CASCADE[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "campgrounds" CASCADE[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "campgrounds" CASCADE[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "campgrounds" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "park_id" integer, "city_id" integer)[0m
+  [1m[35m (14.7ms)[0m  [1m[35mCREATE TABLE "campgrounds" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "park_id" integer, "city_id" integer)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "cities" CASCADE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "cities" CASCADE[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE TABLE "campgrounds" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "park_id" integer, "city_id" integer)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "climbing_gyms" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cities" CASCADE[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "climbing_gyms" CASCADE[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (16.3ms)[0m  [1m[35mCREATE TABLE "campgrounds" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "park_id" integer, "city_id" integer)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cities" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "campgrounds" CASCADE[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "campgrounds" CASCADE[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "campgrounds" CASCADE[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "campgrounds" CASCADE[0m
+  [1m[35m (18.5ms)[0m  [1m[35mCREATE TABLE "climbing_gyms" ("id" bigserial primary key, "name" character varying, "description" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (18.5ms)[0m  [1m[35mCREATE TABLE "climbing_gyms" ("id" bigserial primary key, "name" character varying, "description" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (17.3ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE TABLE "campgrounds" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "park_id" integer, "city_id" integer)[0m
+  [1m[35m (18.8ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "campgrounds" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "park_id" integer, "city_id" integer)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cities" CASCADE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "climbing_gyms" CASCADE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "cities" CASCADE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "climbing_gyms" CASCADE[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "campgrounds" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "park_id" integer, "city_id" integer)[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE TABLE "campgrounds" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "park_id" integer, "city_id" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cities" CASCADE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "cities" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "climbing_gyms" ("id" bigserial primary key, "name" character varying, "description" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" integer, "city_id" integer)[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" integer, "city_id" integer)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "climbing_gyms" ("id" bigserial primary key, "name" character varying, "description" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "outdoor_stores" CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "outdoor_stores" CASCADE[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "climbing_gyms" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "climbing_gyms" CASCADE[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "climbing_gyms" CASCADE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "climbing_gyms" CASCADE[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "climbing_gyms" ("id" bigserial primary key, "name" character varying, "description" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "outdoor_stores" ("id" bigserial primary key, "name" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "outdoor_stores" ("id" bigserial primary key, "name" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" integer, "city_id" integer)[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" integer, "city_id" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "parks" CASCADE[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "climbing_gyms" ("id" bigserial primary key, "name" character varying, "description" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "parks" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "outdoor_stores" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "outdoor_stores" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "climbing_gyms" ("id" bigserial primary key, "name" character varying, "description" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "climbing_gyms" ("id" bigserial primary key, "name" character varying, "description" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "outdoor_stores" ("id" bigserial primary key, "name" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" integer, "city_id" integer)[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "outdoor_stores" ("id" bigserial primary key, "name" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "parks" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "outdoor_stores" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "parks" CASCADE[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" integer, "city_id" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "outdoor_stores" CASCADE[0m
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" integer, "city_id" integer)[0m
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" integer, "city_id" integer)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "outdoor_stores" CASCADE[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "outdoor_stores" CASCADE[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying)[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer)[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "outdoor_stores" ("id" bigserial primary key, "name" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying)[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "outdoor_stores" ("id" bigserial primary key, "name" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "parks" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "parks" CASCADE[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "outdoor_stores" ("id" bigserial primary key, "name" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "outdoor_stores" ("id" bigserial primary key, "name" character varying, "street" character varying, "state" character varying, "zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer, "url" character varying)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "parks" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "parks" CASCADE[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying, "state" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" integer)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying)[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200322154141)[0m
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200322154141)[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200212185346),
+(20200213150000),
+(20200213150116),
+(20200213150807),
+(20200213151131),
+(20200213151221),
+(20200213151619),
+(20200213170026),
+(20200213170158),
+(20200213170239),
+(20200213170327),
+(20200213170402),
+(20200213171757),
+(20200213171816),
+(20200213201120),
+(20200213201308),
+(20200227173645),
+(20200306165918),
+(20200306170106),
+(20200322153951);
+
+[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200212185346),
+(20200213150000),
+(20200213150116),
+(20200213150807),
+(20200213151131),
+(20200213151221),
+(20200213151619),
+(20200213170026),
+(20200213170158),
+(20200213170239),
+(20200213170327),
+(20200213170402),
+(20200213171757),
+(20200213171816),
+(20200213201120),
+(20200213201308),
+(20200227173645),
+(20200306165918),
+(20200306170106),
+(20200322153951);
+
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200322154141)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200212185346),
+(20200213150000),
+(20200213150116),
+(20200213150807),
+(20200213151131),
+(20200213151221),
+(20200213151619),
+(20200213170026),
+(20200213170158),
+(20200213170239),
+(20200213170327),
+(20200213170402),
+(20200213171757),
+(20200213171816),
+(20200213201120),
+(20200213201308),
+(20200227173645),
+(20200306165918),
+(20200306170106),
+(20200322153951);
+
+[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200322154141)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200212185346),
+(20200213150000),
+(20200213150116),
+(20200213150807),
+(20200213151131),
+(20200213151221),
+(20200213151619),
+(20200213170026),
+(20200213170158),
+(20200213170239),
+(20200213170327),
+(20200213170402),
+(20200213171757),
+(20200213171816),
+(20200213201120),
+(20200213201308),
+(20200227173645),
+(20200306165918),
+(20200306170106),
+(20200322153951);
+
+[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-06-15 12:37:05.160913"], ["updated_at", "2021-06-15 12:37:05.160913"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200322154141)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-06-15 12:37:05.161814"], ["updated_at", "2021-06-15 12:37:05.161814"]]
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200212185346),
+(20200213150000),
+(20200213150116),
+(20200213150807),
+(20200213151131),
+(20200213151221),
+(20200213151619),
+(20200213170026),
+(20200213170158),
+(20200213170239),
+(20200213170327),
+(20200213170402),
+(20200213171757),
+(20200213171816),
+(20200213201120),
+(20200213201308),
+(20200227173645),
+(20200306165918),
+(20200306170106),
+(20200322153951);
+
+[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200322154141)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200212185346),
+(20200213150000),
+(20200213150116),
+(20200213150807),
+(20200213151131),
+(20200213151221),
+(20200213151619),
+(20200213170026),
+(20200213170158),
+(20200213170239),
+(20200213170327),
+(20200213170402),
+(20200213171757),
+(20200213171816),
+(20200213201120),
+(20200213201308),
+(20200227173645),
+(20200306165918),
+(20200306170106),
+(20200322153951);
+
+[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200322154141)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-06-15 12:37:05.165085"], ["updated_at", "2021-06-15 12:37:05.165085"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-06-15 12:37:05.165546"], ["updated_at", "2021-06-15 12:37:05.165546"]]
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200212185346),
+(20200213150000),
+(20200213150116),
+(20200213150807),
+(20200213151131),
+(20200213151221),
+(20200213151619),
+(20200213170026),
+(20200213170158),
+(20200213170239),
+(20200213170327),
+(20200213170402),
+(20200213171757),
+(20200213171816),
+(20200213201120),
+(20200213201308),
+(20200227173645),
+(20200306165918),
+(20200306170106),
+(20200322153951);
+
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200322154141)[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "723b6f31d9185d58006689e5319deba40f2efc54"], ["created_at", "2021-06-15 12:37:05.166985"], ["updated_at", "2021-06-15 12:37:05.166985"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "723b6f31d9185d58006689e5319deba40f2efc54"], ["created_at", "2021-06-15 12:37:05.167060"], ["updated_at", "2021-06-15 12:37:05.167060"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200212185346),
+(20200213150000),
+(20200213150116),
+(20200213150807),
+(20200213151131),
+(20200213151221),
+(20200213151619),
+(20200213170026),
+(20200213170158),
+(20200213170239),
+(20200213170327),
+(20200213170402),
+(20200213171757),
+(20200213171816),
+(20200213201120),
+(20200213201308),
+(20200227173645),
+(20200306165918),
+(20200306170106),
+(20200322153951);
+
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "723b6f31d9185d58006689e5319deba40f2efc54"], ["created_at", "2021-06-15 12:37:05.171120"], ["updated_at", "2021-06-15 12:37:05.171120"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "723b6f31d9185d58006689e5319deba40f2efc54"], ["created_at", "2021-06-15 12:37:05.171186"], ["updated_at", "2021-06-15 12:37:05.171186"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-06-15 12:37:05.172125"], ["updated_at", "2021-06-15 12:37:05.172125"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-06-15 12:37:05.173193"], ["updated_at", "2021-06-15 12:37:05.173193"]]
+  [1m[35m (9.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "723b6f31d9185d58006689e5319deba40f2efc54"], ["created_at", "2021-06-15 12:37:05.185846"], ["updated_at", "2021-06-15 12:37:05.185846"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "723b6f31d9185d58006689e5319deba40f2efc54"], ["created_at", "2021-06-15 12:37:05.185802"], ["updated_at", "2021-06-15 12:37:05.185802"]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-06-15 12:37:05.186439"], ["updated_at", "2021-06-15 12:37:05.186439"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-06-15 12:37:05.186596"], ["updated_at", "2021-06-15 12:37:05.186596"]]
+  [1m[35m (32.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (40.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (42.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (40.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "723b6f31d9185d58006689e5319deba40f2efc54"], ["created_at", "2021-06-15 12:37:05.232588"], ["updated_at", "2021-06-15 12:37:05.232588"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "723b6f31d9185d58006689e5319deba40f2efc54"], ["created_at", "2021-06-15 12:37:05.232803"], ["updated_at", "2021-06-15 12:37:05.232803"]]
+  [1m[35m (11.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (11.1ms)[0m  [1m[35mCOMMIT[0m

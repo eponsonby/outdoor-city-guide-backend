@@ -49,4 +49,4 @@ gem "dotenv-rails", "~> 2.7"
 
 gem "httparty", "~> 0.18.0"
 
-gem "nokogiri", "~> 1.10"
+gem "nokogiri", "~> 1.12"

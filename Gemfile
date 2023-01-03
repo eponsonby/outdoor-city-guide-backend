@@ -47,6 +47,6 @@ gem 'fast_jsonapi', '~> 1.5'
 
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 
-gem 'httparty', '~> 0.20.0'
+gem 'httparty', '~> 0.21.0'
 
 gem 'nokogiri', '~> 1.13', '>= 1.13.10'
